@@ -37,3 +37,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - PlayWright: Todo lo creado por este mcp debe quedar almacenado en la carpeta .playwright-mcp (Screenshots por ejemplo)
 - Context7: Utilizaremos este mcp para traer la documentación actualizada del framework.
+
+## Spec Driven Development  - Skills
+- /spec: Usaremos esta skill para crear las especificacione.
+- /spec-impl: Usaremos esta skill para implementar las especificaciones.
