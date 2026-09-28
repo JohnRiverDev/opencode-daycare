@@ -1,6 +1,6 @@
 # SPEC 01 — Home: Feed de la guardería (plantilla `feed.dc.html`)
 
-> **Estado:** Borrador
+> **Estado:** Aprobado
 > **Depende de:** ninguna
 > **Fecha:** 2026-09-28
 > **Objetivo:** Implementar la ruta `/` como copia fiel del mockup `references/pantallas/feed.dc.html`, con sidebar, composer y 3 publicaciones de ejemplo, usando datos estáticos sin autenticación ni base de datos.
