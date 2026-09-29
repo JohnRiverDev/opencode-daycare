@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 const ICON_PROPS = {
   fill: "none",
+  stroke: "currentColor",
   strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round",

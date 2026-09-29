@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Static design mockups (not app source):
+    "references/**",
+    // Playwright MCP artifacts (screenshots, snapshots, logs):
+    ".playwright-mcp/**",
   ]),
 ]);
 
