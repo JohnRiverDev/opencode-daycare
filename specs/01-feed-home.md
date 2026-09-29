@@ -1,6 +1,6 @@
 # SPEC 01 — Home: Feed de la guardería (plantilla `feed.dc.html`)
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** ninguna
 > **Fecha:** 2026-09-28
 > **Objetivo:** Implementar la ruta `/` como copia fiel del mockup `references/pantallas/feed.dc.html`, con sidebar, composer y 3 publicaciones de ejemplo, usando datos estáticos sin autenticación ni base de datos.
@@ -77,13 +77,13 @@ Cada paso deja la aplicación compilable y visible en `npm run dev`.
 
 ## Acceptance criteria
 
-- [ ] `npm run dev` muestra en `http://localhost:3000` el feed con el mismo layout, colores, textos y tipografías que `feed.dc.html` (comparación visual lado a lado).
-- [ ] Fredoka y Nunito se cargan vía `next/font` (sin `<link>` a Google Fonts) y no hay errores ni warnings de fuentes/hidratación en la consola.
-- [ ] Se renderizan las 3 tarjetas con sus badges LOGRO / ACTIVIDAD / ANUNCIO, y la de ACTIVIDAD incluye el placeholder de foto dashed.
-- [ ] Todos los enlaces y botones usan `href="#"`; ningún click navega ni genera errores en consola.
-- [ ] En viewport ≤ 768px el sidebar desaparece y la barra superior con hamburguesa abre/cierra el drawer con overlay; en ≥ 1024px el sidebar queda fijo como en el mockup.
-- [ ] `npm run lint` y `npx tsc --noEmit` pasan sin errores.
-- [ ] Todos los identificadores del código (tipos, campos, componentes, variables, nombres de archivo) están en inglés; solo el texto renderizado en pantalla está en español.
+- [x] `npm run dev` muestra en `http://localhost:3000` el feed con el mismo layout, colores, textos y tipografías que `feed.dc.html` (comparación visual lado a lado).
+- [x] Fredoka y Nunito se cargan vía `next/font` (sin `<link>` a Google Fonts) y no hay errores ni warnings de fuentes/hidratación en la consola.
+- [x] Se renderizan las 3 tarjetas con sus badges LOGRO / ACTIVIDAD / ANUNCIO, y la de ACTIVIDAD incluye el placeholder de foto dashed.
+- [x] Todos los enlaces y botones usan `href="#"`; ningún click navega ni genera errores en consola.
+- [x] En viewport ≤ 768px el sidebar desaparece y la barra superior con hamburguesa abre/cierra el drawer con overlay; en ≥ 1024px el sidebar queda fijo como en el mockup.
+- [x] `npm run lint` y `npx tsc --noEmit` pasan sin errores.
+- [x] Todos los identificadores del código (tipos, campos, componentes, variables, nombres de archivo) están en inglés; solo el texto renderizado en pantalla está en español.
 
 ## Decisiones
 
@@ -113,3 +113,17 @@ Cada paso deja la aplicación compilable y visible en `npm run dev`.
 - Diseño mobile pulido.
 
 Cada uno de esos, si llega, va en su propia spec.
+
+## Notas de verificación (2026-09-28)
+
+Todos los criterios verificados de forma empírica; no se requirieron correcciones de código.
+
+- **Visual / responsive (Playwright):** capturas en `.playwright-mcp/` (`feed-desktop-1280.png`, `feed-mobile-375-closed.png`, `feed-mobile-375-drawer-open.png`, `feed-tablet-768.png`, `feed-1024.png`, `mockup-feed.png`). Comparación lado a lado con `references/pantallas/feed.dc.html`: layout, paleta, tipografías, textos y badges coinciden. El mockup usa scroll interno (`main` con `overflow-y:auto`); la app usa scroll natural de página, diferencia ya contemplada en Riesgos.
+- **Breakpoints:** a 375px y 768px el `aside` computa `display:none` y la barra superior `display:flex`; el drawer abre con overlay y cierra al pulsar el overlay. A 1024px el `aside` computa `display:flex`, `position:sticky`, alto 100vh y la barra superior `display:none`.
+- **Fuentes:** `document.fonts` confirma Fredoka y Nunito `loaded`; `body` computa Nunito y el `h1`/marca Fredoka. El HTML servido no incluye `<link>` a `fonts.googleapis.com`. Patrón validado contra la documentación vigente de `next/font` (Context7, `/vercel/next.js`).
+- **Consola:** 0 errores y 0 warnings tras la carga e hidratación.
+- **Enlaces:** los 16 `<a>` del DOM tienen `href="#"`; al pulsar "Editar" la URL permanece en `http://localhost:3000/#` sin navegación ni errores.
+- **Tooling:** `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
+- **Idioma:** identificadores en inglés (revisión de `app/`, `components/feed/`, `lib/feed-data.ts`); el copy renderizado está en español.
+
+Observación menor (fuera del alcance de esta spec): el overlay y el botón de cerrar del drawer comparten el `aria-label="Cerrar menú"`, lo que produce dos botones con el mismo nombre accesible.

@@ -44,3 +44,6 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Reglas de código
 - Usar código limpio: nombres, variables, funciones, etc., en inglés.
+
+## Agentes
+- spec-verifier: Verifica, corrige y marca los criterios de aceptación ("Acceptance criteria") de un spec. Usa Context7 para validar las recomendaciones de Next.js y el MCP de Playwright con visión para comparar pantallas contra los mockups.
