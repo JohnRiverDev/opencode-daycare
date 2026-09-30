@@ -15,11 +15,12 @@ interface NavItem {
   icon: ReactNode;
 }
 
+export type ActiveNav = "feed" | "kids";
+
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Feed",
     href: "#",
-    active: true,
     icon: (
       <svg width="19" height="19" viewBox="0 0 24 24" {...ICON_PROPS}>
         <path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
@@ -28,7 +29,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Niños",
-    href: "#",
+    href: "/kids",
     icon: (
       <svg width="19" height="19" viewBox="0 0 24 24" {...ICON_PROPS}>
         <circle cx="9" cy="7" r="3" />
@@ -59,13 +60,14 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 /** Navigation link list, shared between the desktop sidebar and the mobile drawer. */
-export function NavLinks() {
+export function NavLinks({ activeNav = "feed" }: { activeNav?: ActiveNav }) {
   return (
     <nav className="flex flex-1 flex-col gap-1">
       {NAV_ITEMS.map((item) => (
         <a
           key={item.label}
           href={item.href}
+          aria-current={item.active ? "page" : undefined}
           className={`flex items-center gap-3 rounded-xl px-3 py-[11px] text-[14.5px] ${
             item.active
               ? "bg-accent-soft font-extrabold text-accent"
