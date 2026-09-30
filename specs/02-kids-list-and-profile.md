@@ -1,6 +1,6 @@
 # SPEC 02 — Gestión de niños: listado y perfil (plantillas `ninos.dc.html` y `perfil-nino.dc.html`)
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-09-29
 > **Objetivo:** Implementar el listado `/kids` y el perfil `/kids/[id]` con la interfaz estática de los mockups, reutilizando la navegación de SPEC 01 y sin backend.
@@ -95,19 +95,19 @@ Cada paso deja la aplicación compilable y visible en `npm run dev`.
 
 ## Acceptance criteria
 
-- [ ] `/kids` muestra los 8 niños del mockup, en el mismo orden, con nombre, "{edad} años · {vínculos}", inicial, tono de avatar y etiquetas MANÍ / LACTOSA / VINCULAR donde corresponde.
-- [ ] El listado se ve idéntico a `ninos.dc.html` en escritorio: ancho máximo 880px, grid de 2 columnas, encabezado, buscador y bloque de sala.
-- [ ] `/kids/1` muestra el perfil de Mateo con avatar de 84px, título, "3 años · Sala Soles", botón "Editar", alerta de alergias, tabla de 3 filas y tarjeta de padres con los estados ACTIVA y PENDIENTE.
-- [ ] `/kids/1` y `/kids/2` (o cualquier id distinto de `"1"`) devuelven la página 404 de Next.js; ninguna tarjeta muestra un perfil inventado.
-- [ ] El enlace "Niños" del sidebar y del drawer lleva a `/kids` y aparece activo en `/kids` y en `/kids/1`; en `/` sigue activo "Feed".
-- [ ] Solo la tarjeta de Mateo es navegable: al pulsarla se llega a `/kids/1`; las otras 7 no cambian la URL ni disparan errores.
-- [ ] El enlace "Volver a Niños" del perfil lleva a `/kids`.
-- [ ] En ≤ 640px el grid pasa a 1 columna y la columna lateral del perfil queda debajo de la principal; en ≥ 1024px el sidebar queda fijo y la barra móvil oculta, igual que en SPEC 01.
-- [ ] El buscador acepta foco y muestra el placeholder "Buscar niño…" pero la lista no cambia al escribir.
-- [ ] "Agregar niño", "Editar", "Resumen del día" y "Vincular otro padre" no navegan y no ejecutan ninguna acción.
-- [ ] Fredoka y Nunito siguen cargándose por `next/font`; no hay errores ni warnings en la consola al visitar `/`, `/kids` y `/kids/1`.
-- [ ] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
-- [ ] Todos los identificadores del código (tipos, campos, componentes, variables, rutas, nombres de archivo) están en inglés; solo el texto renderizado está en español.
+- [x] `/kids` muestra los 8 niños del mockup, en el mismo orden, con nombre, "{edad} años · {vínculos}", inicial, tono de avatar y etiquetas MANÍ / LACTOSA / VINCULAR donde corresponde.
+- [x] El listado se ve idéntico a `ninos.dc.html` en escritorio: ancho máximo 880px, grid de 2 columnas, encabezado, buscador y bloque de sala.
+- [x] `/kids/1` muestra el perfil de Mateo con avatar de 84px, título, "3 años · Sala Soles", botón "Editar", alerta de alergias, tabla de 3 filas y tarjeta de padres con los estados ACTIVA y PENDIENTE.
+- [x] `/kids/1` y `/kids/2` (o cualquier id distinto de `"1"`) devuelven la página 404 de Next.js; ninguna tarjeta muestra un perfil inventado.
+- [x] El enlace "Niños" del sidebar y del drawer lleva a `/kids` y aparece activo en `/kids` y en `/kids/1`; en `/` sigue activo "Feed".
+- [x] Solo la tarjeta de Mateo es navegable: al pulsarla se llega a `/kids/1`; las otras 7 no cambian la URL ni disparan errores.
+- [x] El enlace "Volver a Niños" del perfil lleva a `/kids`.
+- [x] En ≤ 640px el grid pasa a 1 columna y la columna lateral del perfil queda debajo de la principal; en ≥ 1024px el sidebar queda fijo y la barra móvil oculta, igual que en SPEC 01.
+- [x] El buscador acepta foco y muestra el placeholder "Buscar niño…" pero la lista no cambia al escribir.
+- [x] "Agregar niño", "Editar", "Resumen del día" y "Vincular otro padre" no navegan y no ejecutan ninguna acción.
+- [x] Fredoka y Nunito siguen cargándose por `next/font`; no hay errores ni warnings en la consola al visitar `/`, `/kids` y `/kids/1`.
+- [x] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
+- [x] Todos los identificadores del código (tipos, campos, componentes, variables, rutas, nombres de archivo) están en inglés; solo el texto renderizado está en español.
 
 ## Decisiones
 
