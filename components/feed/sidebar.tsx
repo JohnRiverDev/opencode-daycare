@@ -20,7 +20,7 @@ export type ActiveNav = "feed" | "kids";
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Feed",
-    href: "#",
+    href: "/",
     activeOn: "feed",
     icon: (
       <svg width="19" height="19" viewBox="0 0 24 24" {...ICON_PROPS}>
