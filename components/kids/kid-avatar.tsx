@@ -1,12 +1,21 @@
 import type { AvatarTone } from "@/lib/kids-data";
 
-const TONE_CLASSES: Record<AvatarTone, string> = {
-  sky: "bg-sky text-sky-ink",
-  pink: "bg-pink text-pink-ink",
-  green: "bg-green text-green-ink",
-  yellow: "bg-yellow text-yellow-ink",
-  purple: "bg-purple text-purple-ink",
-  steel: "bg-steel text-white",
+const TONE_BACKGROUNDS: Record<AvatarTone, string> = {
+  sky: "bg-sky",
+  pink: "bg-pink",
+  green: "bg-green",
+  yellow: "bg-yellow",
+  purple: "bg-purple",
+  steel: "bg-steel",
+};
+
+const TONE_INKS: Record<AvatarTone, string> = {
+  sky: "text-sky-ink",
+  pink: "text-pink-ink",
+  green: "text-green-ink",
+  yellow: "text-yellow-ink",
+  purple: "text-purple-ink",
+  steel: "text-white",
 };
 
 const SIZE_CLASSES = {
@@ -21,13 +30,17 @@ interface KidAvatarProps {
   initial: string;
   tone: AvatarTone;
   size?: AvatarSize;
+  /** "tone" uses the tone's own ink; "white" is the solid variant (parent avatars). */
+  ink?: "tone" | "white";
 }
 
 /** Round initial avatar with a tonic background (mockup kid avatars). */
-export function KidAvatar({ initial, tone, size = "md" }: KidAvatarProps) {
+export function KidAvatar({ initial, tone, size = "md", ink = "tone" }: KidAvatarProps) {
   return (
     <div
-      className={`flex flex-none items-center justify-center rounded-full font-display font-semibold ${TONE_CLASSES[tone]} ${SIZE_CLASSES[size]}`}
+      className={`flex flex-none items-center justify-center rounded-full font-display font-semibold ${TONE_BACKGROUNDS[tone]} ${
+        ink === "white" ? "text-white" : TONE_INKS[tone]
+      } ${SIZE_CLASSES[size]}`}
     >
       {initial}
     </div>
