@@ -1,6 +1,6 @@
 # SPEC 02 — Gestión de niños: listado y perfil (plantillas `ninos.dc.html` y `perfil-nino.dc.html`)
 
-> **Estado:** Borrador
+> **Estado:** Aprobado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-09-29
 > **Objetivo:** Implementar el listado `/kids` y el perfil `/kids/[id]` con la interfaz estática de los mockups, reutilizando la navegación de SPEC 01 y sin backend.
