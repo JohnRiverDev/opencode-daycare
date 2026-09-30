@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { NavLinks } from "./sidebar";
+import { NavLinks, type ActiveNav } from "./sidebar";
 
 function MenuIcon() {
   return (
@@ -63,7 +63,7 @@ function MobileBrand() {
 }
 
 /** Top bar with hamburger (visible below `lg`) + slide-in drawer with overlay. */
-export function MobileNav() {
+export function MobileNav({ activeNav = "feed" }: { activeNav?: ActiveNav }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -101,7 +101,7 @@ export function MobileNav() {
                 <CloseIcon />
               </button>
             </div>
-            <NavLinks />
+            <NavLinks activeNav={activeNav} />
           </div>
         </div>
       )}

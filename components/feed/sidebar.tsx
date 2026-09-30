@@ -11,15 +11,17 @@ const ICON_PROPS = {
 interface NavItem {
   label: string;
   href: string;
-  active?: boolean;
+  activeOn?: ActiveNav;
   icon: ReactNode;
 }
+
+export type ActiveNav = "feed" | "kids";
 
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Feed",
-    href: "#",
-    active: true,
+    href: "/",
+    activeOn: "feed",
     icon: (
       <svg width="19" height="19" viewBox="0 0 24 24" {...ICON_PROPS}>
         <path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
@@ -28,7 +30,8 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Niños",
-    href: "#",
+    href: "/kids",
+    activeOn: "kids",
     icon: (
       <svg width="19" height="19" viewBox="0 0 24 24" {...ICON_PROPS}>
         <circle cx="9" cy="7" r="3" />
@@ -59,23 +62,27 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 /** Navigation link list, shared between the desktop sidebar and the mobile drawer. */
-export function NavLinks() {
+export function NavLinks({ activeNav = "feed" }: { activeNav?: ActiveNav }) {
   return (
     <nav className="flex flex-1 flex-col gap-1">
-      {NAV_ITEMS.map((item) => (
-        <a
-          key={item.label}
-          href={item.href}
-          className={`flex items-center gap-3 rounded-xl px-3 py-[11px] text-[14.5px] ${
-            item.active
-              ? "bg-accent-soft font-extrabold text-accent"
-              : "font-semibold text-idle"
-          }`}
-        >
-          {item.icon}
-          {item.label}
-        </a>
-      ))}
+      {NAV_ITEMS.map((item) => {
+        const isActive = item.activeOn === activeNav;
+        return (
+          <a
+            key={item.label}
+            href={item.href}
+            aria-current={isActive ? "page" : undefined}
+            className={`flex items-center gap-3 rounded-xl px-3 py-[11px] text-[14.5px] ${
+              isActive
+                ? "bg-accent-soft font-extrabold text-accent"
+                : "font-semibold text-idle"
+            }`}
+          >
+            {item.icon}
+            {item.label}
+          </a>
+        );
+      })}
     </nav>
   );
 }
@@ -157,12 +164,12 @@ function UserCard() {
 }
 
 /** Desktop sidebar (sticky, hidden below the `lg` breakpoint). */
-export function Sidebar() {
+export function Sidebar({ activeNav = "feed" }: { activeNav?: ActiveNav }) {
   return (
     <aside className="sticky top-0 hidden h-screen w-[248px] flex-none flex-col border-r border-edge bg-card px-4 py-6 lg:flex">
       <Brand />
       <NewPostButton />
-      <NavLinks />
+      <NavLinks activeNav={activeNav} />
       <UserCard />
     </aside>
   );

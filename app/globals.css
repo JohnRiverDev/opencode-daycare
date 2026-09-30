@@ -19,6 +19,7 @@
   --color-subtle: #94887b;
   --color-idle: #6e6359;
   --color-label: #8a7c6d;
+  --color-placeholder: #b6a99b;
 
   /* Warm accents */
   --color-accent: #d9583c;
@@ -40,6 +41,36 @@
   /* Kid avatars */
   --color-sky: #a9d9e8;
   --color-sky-ink: #1f7a93;
+  --color-pink: #f4b8cc;
+  --color-pink-ink: #c44a7a;
+  --color-green: #b9dec4;
+  --color-green-ink: #3e8b62;
+  --color-yellow: #f4dc8e;
+  --color-yellow-ink: #9a7b1e;
+  --color-purple: #c9b6e8;
+  --color-purple-ink: #7b5fc0;
+  --color-steel: #a9c7e8;
+
+  /* Kid card badges */
+  --color-allergy: #fbd8cc;
+  --color-allergy-ink: #d9684a;
+  --color-link: #f9d2de;
+  --color-link-ink: #c56486;
+  --color-chevron: #cbb89f;
+  --color-card-hover: #f2a78e;
+
+  /* Linked parent status */
+  --color-parent-active: #cfebd8;
+  --color-parent-active-ink: #3e9b6c;
+  --color-parent-pending: #f7e7a6;
+  --color-parent-pending-ink: #9a7b1e;
+  --color-dashed: #d8cbba;
+
+  /* Allergy alert */
+  --color-alert: #fbdad6;
+  --color-alert-icon: #f4a8a0;
+  --color-alert-title: #c5413a;
+  --color-alert-body: #b25249;
 
   /* Photo placeholder */
   --color-photo: #f4ece1;
