@@ -66,7 +66,7 @@ export default function LoginPage() {
     <div className="min-h-screen grid lg:grid-cols-[1.05fr_1fr] bg-cream">
       <BrandingPanel />
 
-      <div className="flex items-center justify-center p-10">
+      <div className="flex items-center justify-center p-4 sm:p-6 lg:p-10">
         <div className="w-full max-w-[392px]">
           <h2 className="font-display font-semibold text-[30px] m-0 mb-1.5 text-ink">
             Iniciar sesión

@@ -55,7 +55,7 @@ export default async function ActivateAccountPage({
   const initial = kidName.charAt(0).toUpperCase();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cream p-10">
+    <div className="min-h-screen flex items-center justify-center bg-cream p-4 sm:p-6 lg:p-10">
       <div className="w-full max-w-[440px]">
         {/* Logo */}
         <div
