@@ -74,22 +74,22 @@ No se introduce estructura de persistencia. El formulario usa estado interno (`u
 
 ## Acceptance criteria
 
-- [ ] El botón "Agregar niño" del header de `/kids` abre el modal al hacer click.
-- [ ] El modal se cierra con el botón "Cancelar".
-- [ ] El modal se cierra con la tecla Escape.
-- [ ] El modal se cierra con el botón "Guardar".
-- [ ] Los campos Nombre, Fecha y Sala muestran borde rojo si están vacíos al intentar guardar.
-- [ ] El campo "Sala" muestra las tres opciones: Soles, Lunas, Estrellas.
-- [ ] El campo "Sala" tiene "Soles" como valor por defecto.
-- [ ] Al cerrar el modal, todos los campos se resetean.
-- [ ] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
-- [ ] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
-- [ ] Al abrirse, el foco va al primer elemento enfocable del modal.
-- [ ] Al cerrarse, el foco vuelve al botón "Agregar niño".
-- [ ] En < 640px el modal se adapta (fullscreen o scroll interno).
-- [ ] El modal replica visualmente `agregar-nino.dc.html`.
-- [ ] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
-- [ ] No hay errores en la consola del browser.
+- [x] El botón "Agregar niño" del header de `/kids` abre el modal al hacer click.
+- [x] El modal se cierra con el botón "Cancelar".
+- [x] El modal se cierra con la tecla Escape.
+- [x] El modal se cierra con el botón "Guardar".
+- [x] Los campos Nombre, Fecha y Sala muestran borde rojo si están vacíos al intentar guardar.
+- [x] El campo "Sala" muestra las tres opciones: Soles, Lunas, Estrellas.
+- [x] El campo "Sala" tiene "Soles" como valor por defecto.
+- [x] Al cerrar el modal, todos los campos se resetean.
+- [x] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
+- [x] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
+- [x] Al abrirse, el foco va al primer elemento enfocable del modal.
+- [x] Al cerrarse, el foco vuelve al botón "Agregar niño".
+- [x] En < 640px el modal se adapta (fullscreen o scroll interno).
+- [x] El modal replica visualmente `agregar-nino.dc.html`.
+- [x] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
+- [x] No hay errores en la consola del browser.
 
 ## Decisiones
 
@@ -129,3 +129,17 @@ No se introduce estructura de persistencia. El formulario usa estado interno (`u
 - Animaciones de entrada/salida del modal.
 
 Cada uno de esos, si llega, va en su propia spec.
+
+## Notas de verificación
+
+Verificado el 2026-10-11 con Playwright (capturas en `.playwright-mcp/`), inspección de código y `npx eslint .` / `npx tsc --noEmit` (ambos exit code 0).
+
+- **Apertura/cierre**: el botón "Agregar niño" abre el `<dialog>`; "Cancelar", Escape y "Guardar" (con campos válidos) lo cierran. Escape lo cierra y devuelve el foco al botón.
+- **Validación**: al pulsar "Guardar" con Nombre y Fecha vacíos ambos inputs pasan a `border-alert-icon`; Sala no se marca porque siempre tiene valor por defecto. El modal permanece abierto con errores.
+- **Sala**: opciones `soles`/`lunas`/`estrellas` con etiquetas Soles, Lunas, Estrellas; valor por defecto `soles`.
+- **Reset**: al cerrar y reabrir, todos los campos vuelven a vacío y Sala a "Soles", sin bordes de error.
+- **Foco/ARIA**: foco trap verificado en ambos sentidos (desde el último elemento Tab vuelve a Cancelar; desde el primero Shift+Tab va al textarea). Se añadió `role="dialog"` explícito al `<dialog>` para cumplir literalmente el criterio (el elemento nativo ya exponía el rol implícito); `aria-modal="true"` y `aria-labelledby="modal-title"` → "Agregar niño". Al abrir, el foco va al primer enfocable ("Cancelar").
+- **Responsive**: a 375×700 el modal se adapta (ancho `calc(100%-48px)`) y cabe sin scroll; a 360×480 hace scroll interno (`overflow: auto`, scrollHeight > clientHeight).
+- **Visual**: replica `references/pantallas/agregar-nino.dc.html` (fondo `#FBF4EC`, borde `#ECE0D0`, radio 24px, header Cancelar/Agregar niño/Guardar, labels en mayúsculas, inputs `rounded-[14px]`).
+- **Consola**: sin errores ni warnings (solo los mensajes informativos de React DevTools y HMR).
+- **Cambio de código**: `components/ui/modal.tsx` — añadido el atributo `role="dialog"` al elemento `<dialog>`.

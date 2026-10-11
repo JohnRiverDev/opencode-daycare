@@ -110,6 +110,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
   return (
     <dialog
       ref={dialogRef}
+      role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
       onClick={handleBackdropClick}
