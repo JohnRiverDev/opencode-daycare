@@ -1,6 +1,6 @@
 # SPEC 03 — Modal para agregar niño
 
-> **Estado:** Draft
+> **Estado:** Accepted
 > **Depende de:** SPEC 02
 > **Fecha:** 2026-10-10
 > **Objetivo:** Implementar un modal accesible sobre `/kids` para agregar niños visualmente, con validación de campos obligatorios y tres salas disponibles (Soles, Lunas, Estrellas).
