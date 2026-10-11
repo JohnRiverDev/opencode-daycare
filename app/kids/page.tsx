@@ -1,14 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import { MobileNav } from "@/components/feed/mobile-nav";
 import { Sidebar } from "@/components/feed/sidebar";
 import { KidCard } from "@/components/kids/kid-card";
 import { KidSearchField } from "@/components/kids/kid-search-field";
 import { KidsHeader } from "@/components/kids/kids-header";
+import { AddKidModal } from "@/components/kids/add-kid-modal";
 import { kids } from "@/lib/kids-data";
 
 // Only this kid has a profile in the mock data, so only its card is navigable.
 const PROFILE_KID_ID = "1";
 
 export default function KidsPage() {
+  const [isAddKidModalOpen, setIsAddKidModalOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-cream">
       <Sidebar activeNav="kids" />
@@ -16,7 +22,7 @@ export default function KidsPage() {
         <MobileNav activeNav="kids" />
         <main className="flex-1">
           <div className="mx-auto w-full max-w-[880px] px-10 pt-[34px] pb-20">
-            <KidsHeader />
+            <KidsHeader onAddKidClick={() => setIsAddKidModalOpen(true)} />
             <KidSearchField />
             <div className="mb-3.5 flex items-center gap-3">
               <span className="text-[12.5px] font-extrabold tracking-[0.8px] text-ink">
@@ -37,6 +43,10 @@ export default function KidsPage() {
           </div>
         </main>
       </div>
+      <AddKidModal
+        open={isAddKidModalOpen}
+        onClose={() => setIsAddKidModalOpen(false)}
+      />
     </div>
   );
 }
