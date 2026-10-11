@@ -113,7 +113,7 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
       aria-modal="true"
       aria-labelledby={titleId}
       onClick={handleBackdropClick}
-      className="m-0 w-[calc(100%-48px)] max-w-[520px] rounded-[24px] border border-edge bg-modal-bg p-0 shadow-[0_20px_50px_-24px_rgba(63,54,46,0.35)] backdrop:bg-black/30"
+      className="mx-auto my-10 w-[calc(100%-48px)] max-w-[520px] rounded-[24px] border border-edge bg-modal-bg p-0 shadow-[0_20px_50px_-24px_rgba(63,54,46,0.35)] backdrop:bg-black/30"
     >
       <div className="flex flex-col">
         {/* Title section - to be customized by child components */}
