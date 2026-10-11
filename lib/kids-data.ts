@@ -133,3 +133,14 @@ export const kidProfiles: KidProfile[] = [
     ],
   },
 ];
+// Available rooms (SPEC 03). Used by the "Add kid" modal dropdown.
+export interface Room {
+  id: string; // "soles" | "lunas" | "estrellas"
+  name: string; // "Soles" | "Lunas" | "Estrellas"
+}
+
+export const rooms: Room[] = [
+  { id: "soles", name: "Soles" },
+  { id: "lunas", name: "Lunas" },
+  { id: "estrellas", name: "Estrellas" },
+];
