@@ -65,12 +65,12 @@ export function LinkedParents({ profile, onLinkParent }: LinkedParentsProps) {
         <button
           type="button"
           onClick={onLinkParent}
-          className="flex items-center gap-3 pt-2 text-left"
+          className="group flex cursor-pointer items-center gap-3 pt-2 text-left transition-colors hover:text-accent"
         >
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-[color:var(--color-dashed)] text-photo-ink">
+          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-[color:var(--color-dashed)] text-photo-ink transition-colors group-hover:border-accent group-hover:text-accent">
             <PlusIcon />
           </span>
-          <span className="text-[14.5px] font-extrabold text-accent-deep">
+          <span className="text-[14.5px] font-extrabold text-accent-deep transition-colors group-hover:text-accent">
             Vincular otro padre
           </span>
         </button>

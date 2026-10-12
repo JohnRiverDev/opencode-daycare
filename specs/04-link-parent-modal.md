@@ -1,6 +1,6 @@
 # SPEC 04 — Modal para vincular padre
 
-> **Estado:** Approved
+> **Estado:** Implemented
 > **Depende de:** SPEC 02, SPEC 03
 > **Fecha:** 2026-10-12
 > **Objetivo:** Implementar un modal accesible sobre `/kids/[id]` que permita visualizar el flujo de vinculación de un padre/tutor a un niño específico, con validación de campos obligatorios y código de invitación estático.
@@ -11,6 +11,7 @@
 
 - Componente modal accesible sobre `/kids/[id]`, reutilizando el `<Modal>` de SPEC 03.
 - Apertura del modal con click en el enlace "Vincular otro padre" de la sección "Padres vinculados" (`LinkedParents`).
+- Feedback visual al hover en el botón "Vincular otro padre": cursor pointer, cambio de color del texto y del ícono circular, transición suave (usando patrón `group` de Tailwind).
 - Cierre del modal con:
   - Botón "X" (esquina superior derecha del header).
   - Tecla Escape.
@@ -70,27 +71,28 @@ No se introducen nuevas estructuras de datos. El modal reutiliza:
 
 ## Acceptance criteria
 
-- [ ] El botón "Vincular otro padre" de la sección "Padres vinculados" abre el modal al hacer click.
-- [ ] El modal muestra el título "Vincular padre" y el subtítulo "a [nombre del niño]" dinámico.
-- [ ] El modal se cierra con el botón "X" del header.
-- [ ] El modal se cierra con la tecla Escape.
-- [ ] El info banner azul muestra el texto correcto con el nombre del niño dinámico.
-- [ ] El campo "Nombre del padre/madre" muestra borde rojo si está vacío al presionar "Enviar invitación".
-- [ ] El campo "Email" muestra borde rojo si está vacío al presionar "Enviar invitación".
-- [ ] El campo "Email" muestra borde rojo si no contiene "@" al presionar "Enviar invitación".
-- [ ] El selector de parentesco muestra indicador visual si no se ha seleccionado ninguna opción al presionar "Enviar invitación".
-- [ ] El selector de parentesco tiene tres opciones: "Mamá", "Papá", "Tutor/a".
-- [ ] Al seleccionar una opción de parentesco, el pill correspondiente muestra el estilo seleccionado (fondo azul, texto azul).
-- [ ] La sección de código de invitación muestra el código "7K4P9" y el texto "Vence en 7 días".
-- [ ] Al presionar "Enviar invitación" con todos los campos válidos, el modal se cierra.
-- [ ] Al cerrar el modal, todos los campos se resetean (nombre, email, parentesco deseleccionado, errores limpiados).
-- [ ] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
-- [ ] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
-- [ ] Al abrirse, el foco va al primer elemento enfocable del modal.
-- [ ] Al cerrarse, el foco vuelve al botón "Vincular otro padre".
-- [ ] El modal replica visualmente `vincular-padre.dc.html`.
-- [ ] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
-- [ ] No hay errores en la consola del browser.
+- [x] El botón "Vincular otro padre" de la sección "Padres vinculados" abre el modal al hacer click.
+- [x] El modal muestra el título "Vincular padre" y el subtítulo "a [nombre del niño]" dinámico.
+- [x] El modal se cierra con el botón "X" del header.
+- [x] El modal se cierra con la tecla Escape.
+- [x] El info banner azul muestra el texto correcto con el nombre del niño dinámico.
+- [x] El campo "Nombre del padre/madre" muestra borde rojo si está vacío al presionar "Enviar invitación".
+- [x] El campo "Email" muestra borde rojo si está vacío al presionar "Enviar invitación".
+- [x] El campo "Email" muestra borde rojo si no contiene "@" al presionar "Enviar invitación".
+- [x] El selector de parentesco muestra indicador visual si no se ha seleccionado ninguna opción al presionar "Enviar invitación".
+- [x] El selector de parentesco tiene tres opciones: "Mamá", "Papá", "Tutor/a".
+- [x] Al seleccionar una opción de parentesco, el pill correspondiente muestra el estilo seleccionado (fondo azul, texto azul).
+- [x] La sección de código de invitación muestra el código "7K4P9" y el texto "Vence en 7 días".
+- [x] Al presionar "Enviar invitación" con todos los campos válidos, el modal se cierra.
+- [x] Al cerrar el modal, todos los campos se resetean (nombre, email, parentesco deseleccionado, errores limpiados).
+- [x] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
+- [x] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
+- [x] Al abrirse, el foco va al primer elemento enfocable del modal.
+- [x] Al cerrarse, el foco vuelve al botón "Vincular otro padre".
+- [x] El modal replica visualmente `vincular-padre.dc.html`.
+- [x] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
+- [x] No hay errores en la consola del browser.
+- [x] El botón "Vincular otro padre" tiene feedback visual al hover (cursor pointer, cambio de color, transición suave).
 
 ## Decisiones
 
@@ -105,6 +107,7 @@ No se introducen nuevas estructuras de datos. El modal reutiliza:
 - **Sí:** conversión de `<a>` a `<button>` en "Vincular otro padre" — semántica correcta para una acción, no navegación.
 - **Sí:** reset del formulario al cerrar — confirmado por el usuario.
 - **Sí:** accesibilidad completa — confirmado por el usuario.
+- **Sí:** feedback visual al hover en "Vincular otro padre" — mejora de UX estándar: cursor pointer, cambio de color del texto y del ícono circular, transición suave. Uso del patrón `group` de Tailwind para coordinar el hover entre el botón y sus elementos hijos.
 - **No:** persistencia — confirmado por el usuario (puramente visual).
 - **No:** envío real de correos — no hay backend ni integración de email.
 - **No:** generación dinámica del código — texto fijo del mockup.
