@@ -15,8 +15,12 @@ function PlusIcon() {
   );
 }
 
-/** "GESTIÓN" / "Niños" heading with the "Agregar niño" action (static link). */
-export function KidsHeader() {
+interface KidsHeaderProps {
+  onAddKidClick?: () => void;
+}
+
+/** "GESTIÓN" / "Niños" heading with the "Agregar niño" action button. */
+export function KidsHeader({ onAddKidClick }: KidsHeaderProps) {
   return (
     <div className="mb-[22px] flex items-end justify-between gap-4">
       <div>
@@ -25,13 +29,14 @@ export function KidsHeader() {
         </div>
         <h1 className="m-0 font-display text-[30px] font-semibold text-ink">Niños</h1>
       </div>
-      <a
-        href="#"
-        className="flex items-center gap-2 rounded-[14px] bg-linear-to-b from-flame to-flame-deep px-[18px] py-[11px] text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.7)]"
+      <button
+        type="button"
+        onClick={onAddKidClick}
+        className="cursor-pointer transition-[filter] hover:brightness-105 flex items-center gap-2 rounded-[14px] bg-linear-to-b from-flame to-flame-deep px-[18px] py-[11px] text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.7)]"
       >
         <PlusIcon />
         Agregar niño
-      </a>
+      </button>
     </div>
   );
 }

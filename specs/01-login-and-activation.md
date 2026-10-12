@@ -1,6 +1,6 @@
 # SPEC 01 — Login y activación de cuenta
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** —
 > **Date:** 2026-10-10
 > **Objective:** Implementar las pantallas de inicio de sesión y activación de cuenta como rutas estáticas accesibles en `/login` y `/activar-cuenta`.
