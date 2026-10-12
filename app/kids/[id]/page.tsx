@@ -6,7 +6,7 @@ import { Sidebar } from "@/components/feed/sidebar";
 import { AllergyAlert } from "@/components/kids/allergy-alert";
 import { DailySummaryButton } from "@/components/kids/daily-summary-button";
 import { KidDetails } from "@/components/kids/kid-details";
-import { LinkedParents } from "@/components/kids/linked-parents";
+import { LinkedParentsSection } from "@/components/kids/linked-parents-section";
 import { ProfileHeader } from "@/components/kids/profile-header";
 import { kidProfiles, kids } from "@/lib/kids-data";
 
@@ -59,7 +59,7 @@ export default async function KidProfilePage({ params }: PageProps<"/kids/[id]">
               </div>
               <div className="flex w-full flex-col gap-3.5 lg:w-[300px] lg:flex-none">
                 <DailySummaryButton />
-                <LinkedParents profile={profile} />
+                <LinkedParentsSection profile={profile} kidName={kid.name} />
               </div>
             </div>
           </div>
