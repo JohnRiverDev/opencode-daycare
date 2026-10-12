@@ -1,6 +1,6 @@
 # SPEC 04 — Modal para vincular padre
 
-> **Estado:** Draft
+> **Estado:** Approved
 > **Depende de:** SPEC 02, SPEC 03
 > **Fecha:** 2026-10-12
 > **Objetivo:** Implementar un modal accesible sobre `/kids/[id]` que permita visualizar el flujo de vinculación de un padre/tutor a un niño específico, con validación de campos obligatorios y código de invitación estático.
