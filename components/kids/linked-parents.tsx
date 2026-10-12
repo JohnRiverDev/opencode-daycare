@@ -28,8 +28,13 @@ function PlusIcon() {
   );
 }
 
+interface LinkedParentsProps {
+  profile: KidProfile;
+  onLinkParent?: () => void;
+}
+
 /** "PADRES VINCULADOS" card with one row per parent plus the "Vincular otro padre" action. */
-export function LinkedParents({ profile }: { profile: KidProfile }) {
+export function LinkedParents({ profile, onLinkParent }: LinkedParentsProps) {
   return (
     <div className="rounded-[16px] border border-edge bg-card px-[18px] py-4">
       <div className="mb-[14px] text-[12.5px] font-extrabold tracking-[0.8px] text-label">
@@ -57,14 +62,18 @@ export function LinkedParents({ profile }: { profile: KidProfile }) {
             </span>
           </div>
         ))}
-        <a href="#" className="flex items-center gap-3 pt-2">
+        <button
+          type="button"
+          onClick={onLinkParent}
+          className="flex items-center gap-3 pt-2 text-left"
+        >
           <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-[color:var(--color-dashed)] text-photo-ink">
             <PlusIcon />
           </span>
           <span className="text-[14.5px] font-extrabold text-accent-deep">
             Vincular otro padre
           </span>
-        </a>
+        </button>
       </div>
     </div>
   );
