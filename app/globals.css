@@ -77,6 +77,25 @@
   --color-photo: #f4ece1;
   --color-photo-edge: #dbcdba;
   --color-photo-ink: #b0a290;
+
+  /* Link parent modal - info banner */
+  --color-info-bg: #e3ecfb;
+  --color-info-icon: #4e72c8;
+  --color-info-title: #3f5694;
+
+  /* Link parent modal - invitation code */
+  --color-code-bg: #fbf1d6;
+  --color-code-border: #e6d08a;
+  --color-code-text: #8a7234;
+  --color-code-label: #a88526;
+
+  /* Link parent modal - relationship pills */
+  --color-pill-selected-bg: #ccd8f4;
+  --color-pill-selected-border: #9fb8ec;
+  --color-pill-selected-text: #4e72c8;
+  --color-pill-default-bg: #fffdf9;
+  --color-pill-default-border: #ece0d0;
+  --color-pill-default-text: #6e6359;
 }
 
 body {
