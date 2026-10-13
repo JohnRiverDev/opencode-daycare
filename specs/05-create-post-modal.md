@@ -1,6 +1,6 @@
 # SPEC 05 — Modal de crear publicación
 
-> **Estado:** Draft
+> **Estado:** Approved
 > **Depende de:** SPEC 01, SPEC 03
 > **Fecha:** 2026-10-12
 > **Objetivo:** Implementar un modal accesible sobre `/` para crear una nueva publicación con selector de niños, tipo, descripción y fotos, reutilizando el `<Modal>` de SPEC 03.
