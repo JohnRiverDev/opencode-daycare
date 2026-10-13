@@ -181,10 +181,18 @@ Once confirmed, follow these rules during the entire implementation:
 
 **Work rhythm:**
 
-- Implement one step of the plan.
+- Implement exactly ONE step of the plan — no more.
 - Show a summary of which files you touched and what you did.
 - Say: `Step N completed. Could you review the diff and let me know if I continue with Step N+1?`
-- Wait for confirmation before continuing.
+- **STOP and WAIT for explicit user approval before proceeding to the next step.**
+
+⚠️ **ABSOLUTE RULE — Mandatory step-by-step approval:**
+
+- You MUST NOT implement more than one step without explicit user approval.
+- You MUST NOT implement the entire spec in a single action, turn, or message.
+- After each step, you MUST stop, show the diff, and wait for the user to say something like "yes", "continue", "go ahead", "approved", or equivalent.
+- If the user does not approve, you MUST ask what to adjust before moving forward.
+- Implementing multiple steps at once without approval is a violation of this workflow.
 
 **If during the implementation you find an ambiguity** the spec does not resolve:
 
@@ -203,12 +211,40 @@ Once confirmed, follow these rules during the entire implementation:
 **When finishing the last step:**
 
 ```
-✅ All steps of the plan are implemented.
+✅ All steps of the implementation plan are complete.
 
-Next step: verify the spec's acceptance criteria one by one.
-If they all pass, update the spec's state to "Implemented" (or the equivalent
-in your repo's language) and make the final commit before merging this branch.
+⚠️ MANDATORY: Do NOT self-verify acceptance criteria.
+The spec MUST now be passed to the spec-verifier subagent to validate
+that all acceptance criteria are met.
+
+Run: /spec-verifier
 ```
+
+---
+
+### Phase 5 — Spec verification (mandatory)
+
+After all implementation steps are done and the user has approved each one, the spec MUST be verified by the `spec-verifier` subagent.
+
+**Absolute rules:**
+
+- You MUST NOT mark, check, or verify acceptance criteria yourself.
+- You MUST NOT consider the spec "done" until spec-verifier has validated it.
+- You MUST explicitly tell the user to run `/spec-verifier` before considering the spec complete.
+
+The spec-verifier will:
+- Compare the implementation against the acceptance criteria.
+- Validate using Context7 docs and Playwright screenshots if needed.
+- Determine if the spec passes or needs adjustments.
+
+If spec-verifier reports failures:
+- Review the feedback.
+- Fix the issues in the code (following the same step-by-step approval rhythm).
+- Re-run spec-verifier until it passes.
+
+Only after spec-verifier approves should you:
+- Update the spec's state to "Implemented".
+- Prepare for the final commit.
 
 ---
 
@@ -221,8 +257,12 @@ in your repo's language) and make the final commit before merging this branch.
   Phase 2  →  Reads the state → "Approved" (or "Aprobado", etc.) → ✅ continues
   Phase 3  →  git checkout -b spec-01-mvp-arkanoid → git checkout spec-01-mvp-arkanoid
               Shows objective, scope, plan and criteria
-  Phase 4  →  Implements step by step with pauses
-              Ends by reminding to verify the acceptance criteria
+  Phase 4  →  Implements step by step
+              ⚠️  STOPS after each step and waits for explicit user approval
+              NEVER implements multiple steps without approval
+              Ends by telling user to run /spec-verifier
+  Phase 5  →  /spec-verifier validates acceptance criteria
+              ONLY after spec-verifier approves, mark spec as "Implemented"
 
 /spec-impl 02-powerups  (state: Draft / Borrador)
 
