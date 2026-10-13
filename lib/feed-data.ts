@@ -7,7 +7,14 @@
  * taken verbatim from references/pantallas/feed.dc.html.
  */
 
-export type PostType = "achievement" | "activity" | "announcement";
+export type PostType =
+  | "achievement"
+  | "activity"
+  | "announcement"
+  | "meal"
+  | "nap"
+  | "mood"
+  | "photo";
 
 export interface FeedPost {
   id: string;
@@ -26,6 +33,12 @@ export interface FeedPost {
   likes: number;
   comments: number;
   type: PostType;
+  /** IDs of children this post targets. Empty when isForAll is true. */
+  targetChildIds: string[];
+  /** True when this post is addressed to "Toda la sala". */
+  isForAll: boolean;
+  /** Local data URLs for attached photos (client-side only, no upload). */
+  photoDataUrls?: string[];
 }
 
 export interface PostTypeBadge {
@@ -54,6 +67,26 @@ export const postTypeBadge: Record<PostType, PostTypeBadge> = {
     backgroundClass: "bg-announcement-soft text-announcement",
     dotClass: "bg-announcement",
   },
+  meal: {
+    label: "COMIDA",
+    backgroundClass: "bg-yellow-ink text-white",
+    dotClass: "bg-yellow-ink",
+  },
+  nap: {
+    label: "SIESTA",
+    backgroundClass: "bg-nap-soft text-purple-ink",
+    dotClass: "bg-purple-ink",
+  },
+  mood: {
+    label: "ÁNIMO",
+    backgroundClass: "bg-link text-link-ink",
+    dotClass: "bg-link-ink",
+  },
+  photo: {
+    label: "FOTO",
+    backgroundClass: "bg-allergy text-allergy-ink",
+    dotClass: "bg-allergy-ink",
+  },
 };
 
 export const posts: FeedPost[] = [
@@ -67,6 +100,8 @@ export const posts: FeedPost[] = [
     likes: 3,
     comments: 1,
     type: "achievement",
+    targetChildIds: ["mateo"],
+    isForAll: false,
   },
   {
     id: "post-2",
@@ -79,6 +114,8 @@ export const posts: FeedPost[] = [
     likes: 5,
     comments: 2,
     type: "activity",
+    targetChildIds: ["mateo"],
+    isForAll: false,
   },
   {
     id: "post-3",
@@ -89,5 +126,7 @@ export const posts: FeedPost[] = [
     likes: 8,
     comments: 0,
     type: "announcement",
+    targetChildIds: [],
+    isForAll: true,
   },
 ];
