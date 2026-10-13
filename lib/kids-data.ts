@@ -144,3 +144,22 @@ export const rooms: Room[] = [
   { id: "lunas", name: "Lunas" },
   { id: "estrellas", name: "Estrellas" },
 ];
+
+// ─── SPEC 05: Kid options for post targeting ─────────────────────────
+// Lightweight kid records used by the "create post" modal to let the user
+// pick which children a post is addressed to. IDs match the ones in
+// lib/feed-data.ts targetChildIds.
+
+export interface KidOption {
+  id: string;
+  name: string;
+  initials: string;
+  avatarBg: string;
+  avatarInk: string;
+}
+
+export const postableKids: KidOption[] = [
+  { id: "mateo", name: "Mateo", initials: "M", avatarBg: "#A9D9E8", avatarInk: "#1F7A93" },
+  { id: "sofia", name: "Sofía", initials: "S", avatarBg: "#F4B8CC", avatarInk: "#C44A7A" },
+  { id: "benjamin", name: "Benjamín", initials: "B", avatarBg: "#B9DEC4", avatarInk: "#3E8B62" },
+];
