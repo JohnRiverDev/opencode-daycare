@@ -205,7 +205,7 @@ export function CreatePostModal({
           </div>
           {errors.target && (
             <p className="mt-2 text-xs font-semibold text-alert-title">
-              Seleccioná al menos un niño o "Toda la sala"
+              Seleccioná al menos un niño o {"\"Toda la sala\""}
             </p>
           )}
         </div>

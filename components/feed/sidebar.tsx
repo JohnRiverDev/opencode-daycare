@@ -115,10 +115,15 @@ function Brand() {
   );
 }
 
-function NewPostButton() {
+interface NewPostButtonProps {
+  onClick?: () => void;
+}
+
+function NewPostButton({ onClick }: NewPostButtonProps) {
   return (
-    <a
-      href="#"
+    <button
+      type="button"
+      onClick={onClick}
       className="mb-[18px] flex w-full items-center justify-center gap-2 rounded-[14px] bg-linear-to-b from-flame to-flame-deep px-3 py-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.75)]"
     >
       <svg
@@ -134,7 +139,7 @@ function NewPostButton() {
         <path d="M12 5v14M5 12h14" />
       </svg>
       Nueva publicación
-    </a>
+    </button>
   );
 }
 
@@ -164,11 +169,17 @@ function UserCard() {
 }
 
 /** Desktop sidebar (sticky, hidden below the `lg` breakpoint). */
-export function Sidebar({ activeNav = "feed" }: { activeNav?: ActiveNav }) {
+export function Sidebar({
+  activeNav = "feed",
+  onNewPost,
+}: {
+  activeNav?: ActiveNav;
+  onNewPost?: () => void;
+}) {
   return (
     <aside className="sticky top-0 hidden h-screen w-[248px] flex-none flex-col border-r border-edge bg-card px-4 py-6 lg:flex">
       <Brand />
-      <NewPostButton />
+      <NewPostButton onClick={onNewPost} />
       <NavLinks activeNav={activeNav} />
       <UserCard />
     </aside>
