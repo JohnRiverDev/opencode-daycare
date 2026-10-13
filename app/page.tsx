@@ -1,7 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import { MobileNav } from "@/components/feed/mobile-nav";
 import { PostCard } from "@/components/feed/post-card";
 import { Sidebar } from "@/components/feed/sidebar";
-import { posts } from "@/lib/feed-data";
+import { CreatePostModal } from "@/components/feed/create-post-modal";
+import { posts as initialPosts, type FeedPost, type PostType } from "@/lib/feed-data";
+import { postableKids } from "@/lib/kids-data";
 
 function CameraIcon() {
   return (
@@ -57,9 +62,55 @@ function PostComposer() {
 }
 
 export default function Home() {
+  const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
+  const [localPosts, setLocalPosts] = useState<FeedPost[]>(initialPosts);
+
+  const handlePublish = (postData: {
+    targetChildIds: string[];
+    isForAll: boolean;
+    type: PostType;
+    body: string;
+    photoDataUrls: string[];
+  }) => {
+    const now = new Date();
+    const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} · publicado por vos`;
+    
+    let audience: string;
+    if (postData.isForAll) {
+      audience = "Para: toda la sala";
+    } else if (postData.targetChildIds.length === 1) {
+      const kid = postableKids.find(k => k.id === postData.targetChildIds[0]);
+      audience = `Para: familia de ${kid?.name || 'niño'}`;
+    } else {
+      const kidNames = postData.targetChildIds.map(id => {
+        const kid = postableKids.find(k => k.id === id);
+        return kid?.name || 'niño';
+      });
+      audience = `Para: familias de ${kidNames.join(', ')}`;
+    }
+    
+    const newPost: FeedPost = {
+      id: `post-${Date.now()}`,
+      author: "Tú",
+      avatarInitials: "T",
+      time: timeStr,
+      audience,
+      body: postData.body,
+      likes: 0,
+      comments: 0,
+      type: postData.type,
+      targetChildIds: postData.targetChildIds,
+      isForAll: postData.isForAll,
+      photoDataUrls: postData.photoDataUrls.length > 0 ? postData.photoDataUrls : undefined,
+    };
+    
+    setLocalPosts(prev => [newPost, ...prev]);
+    setIsCreatePostModalOpen(false);
+  };
+
   return (
     <div className="flex min-h-screen bg-cream">
-      <Sidebar />
+      <Sidebar onNewPost={() => setIsCreatePostModalOpen(true)} />
       <div className="flex min-w-0 flex-1 flex-col">
         <MobileNav />
         <main className="flex-1">
@@ -73,13 +124,18 @@ export default function Home() {
               <span className="h-px flex-1 bg-line" />
             </div>
             <div className="flex flex-col gap-4">
-              {posts.map((post) => (
+              {localPosts.map((post) => (
                 <PostCard key={post.id} post={post} />
               ))}
             </div>
           </div>
         </main>
       </div>
+      <CreatePostModal
+        open={isCreatePostModalOpen}
+        onClose={() => setIsCreatePostModalOpen(false)}
+        onPublish={handlePublish}
+      />
     </div>
   );
 }
