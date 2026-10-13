@@ -268,8 +268,30 @@ export function CreatePostModal({
             FOTOS
           </div>
           <div className="flex gap-3">
+            {/* Placeholder thumbnail (shown when no photos) */}
+            {photoDataUrls.length === 0 && (
+              <div className="flex h-[96px] w-[96px] items-center justify-center rounded-[14px] border border-edge bg-photo">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-chevron"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="9" cy="9" r="2" />
+                  <path d="m21 15-3.6-3.6a2 2 0 0 0-2.8 0L6 21" />
+                </svg>
+              </div>
+            )}
+
             {/* Selected photo thumbnails */}
             {photoDataUrls.map((dataUrl, index) => (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 key={index}
                 src={dataUrl}

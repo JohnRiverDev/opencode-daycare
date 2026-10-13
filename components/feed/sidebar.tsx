@@ -124,7 +124,7 @@ function NewPostButton({ onClick }: NewPostButtonProps) {
     <button
       type="button"
       onClick={onClick}
-      className="mb-[18px] flex w-full items-center justify-center gap-2 rounded-[14px] bg-linear-to-b from-flame to-flame-deep px-3 py-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.75)]"
+      className="mb-[18px] flex w-full cursor-pointer items-center justify-center gap-2 rounded-[14px] bg-linear-to-b from-flame to-flame-deep px-3 py-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.75)] transition-all duration-200 hover:scale-[1.02] hover:from-flame-deep hover:to-accent-deep hover:shadow-[0_10px_22px_-8px_rgba(238,129,100,0.9)]"
     >
       <svg
         width="17"
