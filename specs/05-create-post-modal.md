@@ -1,6 +1,6 @@
 # SPEC 05 — Modal de crear publicación
 
-> **Estado:** Approved
+> **Estado:** Implemented
 > **Depende de:** SPEC 01, SPEC 03
 > **Fecha:** 2026-10-12
 > **Objetivo:** Implementar un modal accesible sobre `/` para crear una nueva publicación con selector de niños, tipo, descripción y fotos, reutilizando el `<Modal>` de SPEC 03.
@@ -124,37 +124,37 @@ Los posts existentes (post-1, post-2, post-3) se actualizan para cumplir la nuev
 
 ## Acceptance criteria
 
-- [ ] El botón "Nueva publicación" del sidebar abre el modal al hacer click.
-- [ ] El modal muestra el header con "Cancelar" a la izquierda, "Nueva publicación" centrado, "Publicar" a la derecha.
-- [ ] El modal se cierra con el botón "Cancelar".
-- [ ] El modal se cierra con la tecla Escape.
-- [ ] La sección PARA muestra 3 niños (Mateo, Sofía, Benjamín) con sus avatares circulares y colores.
-- [ ] La sección PARA muestra la opción "Toda la sala".
-- [ ] Al seleccionar un niño, el pill muestra el estilo seleccionado (fondo `#3F362E`, texto blanco).
-- [ ] Se pueden seleccionar múltiples niños simultáneamente.
-- [ ] Al seleccionar "Toda la sala", se deseleccionan los niños individuales.
-- [ ] Al seleccionar un niño individual, se deselecciona "Toda la sala".
-- [ ] La sección TIPO muestra 7 tipos: Comida, Siesta, Actividad, Logro, Ánimo, Foto, Anuncio.
-- [ ] Cada tipo tiene su color de fondo y texto calcado del mockup.
-- [ ] Al seleccionar un tipo, el pill muestra el estilo seleccionado.
-- [ ] Solo se puede seleccionar un tipo a la vez.
-- [ ] La sección DESCRIPCIÓN muestra un textarea con placeholder "Contá cómo le fue hoy…".
-- [ ] La sección FOTOS muestra un thumbnail y un botón "Agregar" con borde dashed.
-- [ ] El botón "Agregar" abre un input de archivo y muestra la imagen seleccionada como thumbnail.
-- [ ] Al presionar "Publicar" sin seleccionar ningún target, se muestra indicador visual de error en la sección PARA.
-- [ ] Al presionar "Publicar" sin seleccionar ningún tipo, se muestra indicador visual de error en la sección TIPO.
-- [ ] Al presionar "Publicar" con la descripción vacía, se muestra borde rojo en el textarea.
-- [ ] Al presionar "Publicar" con todos los campos válidos, la publicación se agrega al feed y el modal se cierra.
-- [ ] La publicación nueva aparece en el feed con el tipo, descripción y fotos correctos.
-- [ ] Al cerrar el modal, todos los campos se resetean (niños deseleccionados, tipo deseleccionado, descripción vacía, fotos limpiadas, errores limpiados).
-- [ ] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
-- [ ] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
-- [ ] Al abrirse, el foco va al primer elemento enfocable del modal.
-- [ ] Al cerrarse, el foco vuelve al botón "Nueva publicación" del sidebar.
-- [ ] En < 640px el modal se adapta (fullscreen o scroll interno).
-- [ ] El modal replica visualmente `crear-publicacion.dc.html`.
-- [ ] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
-- [ ] No hay errores en la consola del browser.
+- [x] El botón "Nueva publicación" del sidebar abre el modal al hacer click.
+- [x] El modal muestra el header con "Cancelar" a la izquierda, "Nueva publicación" centrado, "Publicar" a la derecha.
+- [x] El modal se cierra con el botón "Cancelar".
+- [x] El modal se cierra con la tecla Escape.
+- [x] La sección PARA muestra 3 niños (Mateo, Sofía, Benjamín) con sus avatares circulares y colores.
+- [x] La sección PARA muestra la opción "Toda la sala".
+- [x] Al seleccionar un niño, el pill muestra el estilo seleccionado (fondo `#3F362E`, texto blanco).
+- [x] Se pueden seleccionar múltiples niños simultáneamente.
+- [x] Al seleccionar "Toda la sala", se deseleccionan los niños individuales.
+- [x] Al seleccionar un niño individual, se deselecciona "Toda la sala".
+- [x] La sección TIPO muestra 7 tipos: Comida, Siesta, Actividad, Logro, Ánimo, Foto, Anuncio.
+- [x] Cada tipo tiene su color de fondo y texto calcado del mockup.
+- [x] Al seleccionar un tipo, el pill muestra el estilo seleccionado.
+- [x] Solo se puede seleccionar un tipo a la vez.
+- [x] La sección DESCRIPCIÓN muestra un textarea con placeholder "Contá cómo le fue hoy…".
+- [x] La sección FOTOS muestra un thumbnail y un botón "Agregar" con borde dashed.
+- [x] El botón "Agregar" abre un input de archivo y muestra la imagen seleccionada como thumbnail.
+- [x] Al presionar "Publicar" sin seleccionar ningún target, se muestra indicador visual de error en la sección PARA.
+- [x] Al presionar "Publicar" sin seleccionar ningún tipo, se muestra indicador visual de error en la sección TIPO.
+- [x] Al presionar "Publicar" con la descripción vacía, se muestra borde rojo en el textarea.
+- [x] Al presionar "Publicar" con todos los campos válidos, la publicación se agrega al feed y el modal se cierra.
+- [x] La publicación nueva aparece en el feed con el tipo, descripción y fotos correctos.
+- [x] Al cerrar el modal, todos los campos se resetean (niños deseleccionados, tipo deseleccionado, descripción vacía, fotos limpiadas, errores limpiados).
+- [x] El modal tiene foco trap (Tab/Shift+Tab no sale del modal).
+- [x] El modal tiene `role="dialog"`, `aria-modal="true"`, `aria-labelledby`.
+- [x] Al abrirse, el foco va al primer elemento enfocable del modal.
+- [x] Al cerrarse, el foco vuelve al botón "Nueva publicación" del sidebar.
+- [x] En < 640px el modal se adapta (fullscreen o scroll interno).
+- [x] El modal replica visualmente `crear-publicacion.dc.html`.
+- [x] `npm run lint` y `npx tsc --noEmit` terminan con exit code 0.
+- [x] No hay errores en la consola del browser.
 
 ## Decisiones
 
@@ -193,3 +193,22 @@ Los posts existentes (post-1, post-2, post-3) se actualizan para cumplir la nuev
 - Animaciones de entrada/salida del modal.
 
 Cada uno de esos, si llega, va en su propia spec.
+
+## Notas de verificación
+
+**Verificado por:** spec-verifier · **Fecha:** 2026-10-12 · **Rama:** `spec-05-create-post-modal` (HEAD `f178aab`) · **Estado del working tree:** limpio.
+
+**Método:**
+
+- **Código:** inspección de `components/feed/create-post-modal.tsx`, `components/ui/modal.tsx`, `components/feed/sidebar.tsx`, `components/feed/post-card.tsx`, `app/page.tsx`, `lib/feed-data.ts`, `lib/kids-data.ts` y `app/globals.css`.
+- **Tooling:** `npm run lint` → exit 0 (1 aviso `@next/next/no-img-element`, no bloqueante); `npx tsc --noEmit` → exit 0.
+- **Navegador (Playwright MCP):** dev server en `http://localhost:3000`. Se validaron apertura, header, selector PARA (selección múltiple + exclusividad con "Toda la sala"), selector TIPO (selección simple con sombra + `scale: 1.05`), textarea, FOTOS (placeholder + botón "Agregar" con borde `dashed #DBCDBA`), subida de archivo real (data URL 96×96), validación (labels en `#C5413A` y borde `#F4A8A0`), publicación (post nuevo en el feed con tipo COMIDA, descripción y foto), reset al cerrar, foco trap (Tab/Shift+Tab), atributos ARIA, foco inicial y retorno de foco al disparador, y adaptación a 375 px con scroll interno. Consola del browser: 0 errores, 0 warnings.
+- **Comparación visual:** cotejo del modal contra `references/pantallas/crear-publicacion.dc.html` (renderizado local) — colores, tipografías, espaciados y contenido coinciden.
+
+**Evidencia (capturas en `.playwright-mcp/`):** `spec05-verify-desktop.png`, `spec05-verify-mobile-375.png`, `spec05-verify-filled.png`, `spec05-mockup-reference.png`.
+
+**Observaciones (no bloqueantes):**
+
+- El ancho máximo del diálogo es `520px` (heredado del `<Modal>` de SPEC 03), mientras el mockup usa `580px`. Es consecuencia directa de la decisión "no modificar el componente base"; el contenido interno replica el mockup.
+- En < 640px el header envuelve el título "Nueva publicación" en dos líneas; el modal se mantiene usable con scroll interno.
+- El `photoDataUrls` **no** valida obligatoriedad (correcto según las decisiones de la spec).

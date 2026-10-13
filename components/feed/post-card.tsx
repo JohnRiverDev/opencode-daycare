@@ -118,7 +118,20 @@ export function PostCard({ post }: { post: FeedPost }) {
         {post.body}
       </p>
 
-      {post.photoCaption && (
+      {post.photoDataUrls && post.photoDataUrls.length > 0 && (
+        <div className="mt-3.5 flex gap-3 overflow-x-auto">
+          {post.photoDataUrls.map((dataUrl, index) => (
+            <img
+              key={index}
+              src={dataUrl}
+              alt={`Foto ${index + 1}`}
+              className="h-[200px] w-auto flex-none rounded-2xl border border-edge object-cover"
+            />
+          ))}
+        </div>
+      )}
+
+      {post.photoCaption && !post.photoDataUrls?.length && (
         <a
           href="#"
           className="mt-3.5 flex h-[200px] flex-col items-center justify-center gap-2 rounded-2xl border-[1.5px] border-dashed border-photo-edge bg-photo text-photo-ink"
