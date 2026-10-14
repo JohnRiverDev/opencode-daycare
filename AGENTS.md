@@ -15,6 +15,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Tailwind CSS **v4**: no `tailwind.config.*` file exists. Theme customization goes in `app/globals.css` via `@theme` (CSS-first config).
 - Path alias `@/*` maps to the repo root (e.g. `@/app/...`).
 - ESLint 9 flat config (`eslint.config.mjs`) with `eslint-config-next` core-web-vitals + typescript presets.
+- Supabase: Backend as a Service (BaaS) para autenticación, base de datos PostgreSQL, storage, realtime y edge functions.
 
 ## Commands
 
@@ -37,13 +38,23 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - PlayWright: Todo lo creado por este mcp debe quedar almacenado en la carpeta .playwright-mcp (Screenshots por ejemplo)
 - Context7: Utilizaremos este mcp para traer la documentación actualizada del framework.
+- Supabase: MCP para interactuar con Supabase (gestión de proyectos, base de datos, autenticación, storage, edge functions, RLS, etc.).
 
-## Spec Driven Development  - Skills
+## Skills
 - /spec: Usaremos esta skill para crear las especificacione.
 - /spec-impl: Usaremos esta skill para implementar las especificaciones.
+- supabase: Skill para cualquier tarea que involucre Supabase (autenticación, base de datos, storage, realtime, edge functions, RLS, políticas de seguridad, migraciones, etc.). Cargar ANTES de trabajar con Supabase.
+- supabase-postgres-best-practices: Skill con mejores prácticas de PostgreSQL mantenidas por Supabase. Cargar ANTES de crear o modificar tablas, columnas, políticas RLS, triggers, funciones, índices o cualquier operación de base de datos.
+- context7-mcp: Skill para usar Context7 MCP y traer documentación actualizada de librerías y frameworks.
+- find-skills: Skill para descubrir e instalar nuevas skills cuando se necesita funcionalidad adicional.
+- opencode: Skill para cualquier pregunta sobre OpenCode (configuración, troubleshooting, desarrollo de plugins, integración con MCPs, etc.).
+- report: Skill para reportar issues o bugs de OpenCode.
 
 ## Reglas de código
 - Usar código limpio: nombres, variables, funciones, etc., en inglés.
+- Cargar la skill `supabase` antes de trabajar con cualquier funcionalidad de Supabase.
+- Cargar la skill `supabase-postgres-best-practices` antes de crear o modificar schema de base de datos, políticas RLS, triggers, funciones o índices.
+- Usar Context7 para consultar documentación actualizada de Next.js, Supabase, y otras librerías del stack.
 
 ## Agents
 - spec-verifier: Verifica, corrige y marca los criterios de aceptación ("Acceptance criteria") de un spec. Usa Context7 para validar las recomendaciones de Next.js y el MCP de Playwright con visión para comparar pantallas contra los mockups.
